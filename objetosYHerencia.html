@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos y herencia</title>
+</head>
+<body>
+    <script>
+        /* Creacion de objetos en JavaScript */
+
+        //Variante 1 Object literal
+        // const persona = {
+        //     nombre : "Felix",
+        //     apellidos : "Vicenta Docampo",
+        //     edad: 34,
+        //     'vivienda habitual' : 'calle de las calles',
+        //     nombreCompleto: function(){
+        //         return `${this.nombre} ${this.apellidos}`
+        //     }
+        
+
+        //Variante 2
+        // const persona = {
+        //     nombre : "Felix",
+        //     apellidos : "Vicenta Docampo",
+        //     edad: 34,
+        //     viviendaHabitual : 'calle de las calles',
+        //     nombreCompleto(){
+        //         return `${this.nombre} ${this.apellidos}`
+        //     }
+        // }
+        
+
+        //Variante 3. Muy adecuada para recuperar datos de un formulario
+        //o cuando no se conocen los datos
+            const persona = {}
+            persona.nombre = "Felix"
+            persona.apellidos = "Vicenta"
+            persona.email = "fv104@hotmail.com"
+
+            persona.nombreCompleto = function(){
+                return `${this.nombre} ${this.apellidos}`
+            }
+
+
+        console.log(persona.nombreCompleto())
+        console.log(persona.nombre)
+        // console.log("Vivienda Habitual " + persona['viviendaHabitual'])
+    </script>
+</body>
+</html>

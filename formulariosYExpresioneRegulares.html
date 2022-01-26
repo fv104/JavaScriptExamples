@@ -33,7 +33,7 @@
         //Comprobar justo antes de que el usuario abandone el campo,que lo que
         //ha escrito cumple con el patron especificado(expresion regular)
         inputNombre.addEventListener('blur',function(){
-           const patron =  /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/
+           const patron =  /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]?)+$/
 
            const nombreEscrito = this.value
            console.log(nombreEscrito)
