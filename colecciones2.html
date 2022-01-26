@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <select id="nombre">
+        <option></option>
+        <option value="1">Inma</option>
+        <option value="2">Fabricio</option>
+        <option value="3">Luis</option>
+        <option value="4">Miguel</option>
+        <option value="5">Gonzalo</option>
+    </select>
+</div>
+<output id="result"></output>
+<script>
+    //Variante 1 con funcion de callback anonima
+    const selectNombres = document.querySelector('#nombre')
+    const result = document.querySelector('#result')
+    selectNombres.addEventListener('change',function() {
+        const valor = this.value
+        
+        /*Recuperar el texto de la opcion seleccionada*/
+        //Primero: Recuperar el indice de la opcion seleccionada
+        const indicedeLaOpcionSeleccionada = this.options.selectedIndex
+        //Ya con el indice de la option seleccionada puedo obtener el texto de la opcion
+        const textOpSelected = this.options[indicedeLaOpcionSeleccionada].textContent
+
+        result.textContent = `Ha seleccionado la opcion con valor ${valor} y texto ${textOpSelected}`
+    })
+
+    //Variante 2 con arrow function
+        //  selectNombres.addEventListener('change',(event) => {
+            // const valor = event.currentTarget.value
+        // const valor = event.target.value
+        
+        // result.textContent = `Ha seleccionado la opcion con valor ${valor}`
+        //  })
+</script>
+</body>
+</html>

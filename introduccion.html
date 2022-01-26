@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Para que JS se ejecute una vez que todos los
+        //elementos de la pagina web se han cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const parrafo = document.querySelector('p')
+
+            parrafo.textContent = "Se ha cambiado mi contenido"
+        })
+
+
+    </script>
+</head>
+
+<body>
+    <p>Parrafo 1</p>
+</body>
+
+</html>

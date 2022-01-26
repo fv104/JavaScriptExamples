@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colecciones</title>
+</head>
+<body>
+    
+
+    <script>
+
+        //Arrays
+
+        const elementos = [250,20.5, 'Total',[1,2],['nombre','apellidos']]
+        const nombres = ['Gonzalo','Alfonso','Frank','Guille','Luis','Andres','Jose Ramon','Jose Carlos']
+
+        // //Recorrer la coleccion
+        // //For estandar
+        // for(let index = 0; index < nombres.length; index++) {
+        //     const nombre = nombres[index]
+        //     console.log(nombre)
+        // }
+        //For of
+
+        for(const nombre of nombres){
+            console.log(nombre)
+        }
+        //Obtener una nueva coleccion a partir de nombres con todo en mayuscula
+        const nombresMayuscula = nombres.map(n => n.toUpperCase())
+        console.log(nombresMayuscula)
+
+        //Filtrar coleccion de nombres por los nombres cuya letra inicial sea J
+        const nombresFiltered = nombres.filter(n => n.startsWith('J'))
+        console.log(nombresFiltered)
+    </script>
+</body>
+</html>

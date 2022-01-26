@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones regulares</title>
+    <style>
+        #infoNombre{
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post" id="formulario">
+        <input type="text" id="nombre" placeholder="Escribe tu nombre" required>
+        <span id="infoNombre">El nombre tiene que comenzar por mayusculas y contener solo letras</span>
+        <input type="text" id="apellidos" placeholder="Escribe tu apellido" required>
+        <input type="submit">
+
+    </form>
+    <script>
+        
+        const inputNombre = document.querySelector('#nombre')
+
+        //Para ocultar el mensaje de error cuando se escriba el nombre
+        inputNombre.addEventListener('keydown',function(){
+
+            const infoNombre = document.querySelector('#infoNombre')
+            infoNombre.style.display = "none"
+        })
+
+        //Comprobar justo antes de que el usuario abandone el campo,que lo que
+        //ha escrito cumple con el patron especificado(expresion regular)
+        inputNombre.addEventListener('blur',function(){
+           const patron =  /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/
+
+           const nombreEscrito = this.value
+           console.log(nombreEscrito)
+            //Preguntar si el nombre suministrado cumple con el patron
+            if(!patron.test(nombreEscrito)){
+                //Mensaje para indicar que no esta bien escrito
+                const infoNombre = document.querySelector('#infoNombre')
+                infoNombre.style = "display: block;color: red"
+                //Lo devuelvo para que escriba bien el nombre
+                this.focus();
+                
+                //Limpiar el nombre que se ha escrito
+                this.value = ''
+
+            }
+        })
+
+        //Validar el formulario antes de que sea enviado
+        const formulario = document.querySelector('#formulario')
+        formulario.addEventListener('submit',function(event){
+            //Impedir que el formulario se envie hasta que no se haya validado
+            event.preventDefault()
+            event.stopPropagation()
+
+            //Si al final el formulario esta Ok
+            formulario.submit()
+
+        })
+    </script>
+</body>
+</html>

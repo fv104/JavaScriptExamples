@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script async src="script1.js"></script> -->
+</head>
+<body>
+    <p id="p1">Hola</p>
+    <button id="btn1">Presioname</button>
+    <script>
+        const boton1 = document.querySelector('#btn1')
+
+        function handleEventClick(){
+            const nombre = prompt("¿Su nombre por favor?")
+
+            //Template literal => implica que entre backticks
+            //se pueden evaluar expresiones conjuntamente con string
+            alert(`Hola ${nombre}`)
+
+            const parrafo1 = document.querySelector('#p1')
+            parrafo1.textContent = `Bienvenido ${nombre}`
+        }
+        //variante 1
+        // boton1.addEventListener('click',handleEventClick)
+        //Variante 2
+        // boton1.addEventListener('click', function (){
+        //     const nombre = prompt("¿Su nombre por favor?")
+
+        //     //Template literal => implica que entre backticks
+        //     //se pueden evaluar expresiones conjuntamente con string
+        //     alert(`Hola ${nombre}`)
+
+        //     const parrafo1 = document.querySelector('#p1')
+        //     parrafo1.textContent = `Bienvenido ${nombre}`
+        // })
+
+        //Variante 3
+        boton1.addEventListener('click', () =>{
+            const nombre = prompt("¿Su nombre por favor?")
+
+            //Template literal => implica que entre backticks
+            //se pueden evaluar expresiones conjuntamente con string
+            alert(`Hola ${nombre}`)
+
+            const parrafo1 = document.querySelector('#p1')
+            parrafo1.textContent = `Bienvenido ${nombre}`
+        })
+
+    </script>
+</body>
+</html>

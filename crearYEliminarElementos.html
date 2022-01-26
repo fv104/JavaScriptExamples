@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1" title="Crea parrafos dinamicos">Crear Parrafos</button>
+    <button id="btn2">Crear lista no ordenada</button>
+    <button id="btn3">Eliminar lista no ordenadada</button>
+    <script>
+        //Eliminar la lista no ordenada
+        const boton3 = document.querySelector('#btn3')
+        boton3.addEventListener('click',() =>{
+            const listaNoOrdenada = document.querySelector('ul')
+            // //Primero eliminar a los nodos hijos
+            // while(listaNoOrdenada.hasChildNodes()){
+            //     listaNoOrdenada.removeChild(listaNoOrdenada.lastChild)
+            // }
+            // //Por ultimo eliminar al nodo padre
+            // document.body.removeChild(listaNoOrdenada)
+            listaNoOrdenada.remove()
+        })
+
+        //Crear lista no ordenada
+        const boton2 = document.querySelector('#btn2')
+        boton2.addEventListener("click",() =>{
+            const ul = document.createElement('ul')
+            const li1 = document.createElement('li')
+            const li2 = document.createElement('li')
+            const li3 = document.createElement('li')
+
+            li1.textContent = "Elemento 1"
+            li2.textContent = "Elemento 2"
+            li3.textContent = "Elemento 3"
+
+            ul.appendChild(li1)
+            ul.appendChild(li2)
+            ul.appendChild(li3)
+
+            document.body.appendChild(ul)
+        })
+        //Crear parrafos
+        const boton1 = document.querySelector('#btn1')
+
+        let parrafoCounter = 0
+
+        boton1.addEventListener('click',() =>{
+           const parrafo = document.createElement('p')
+           parrafo.textContent = `Parrafo ${++parrafoCounter} creado dinamicamente`
+
+           document.querySelector('body').appendChild(parrafo)
+        })
+
+    </script>
+</body>
+</html>
