@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+</head>
+
+<body>
+    <h1>AJAX Java Script Asincrono con XMLHttpRequest y callbacks</h1>
+
+    <button id="btn1" title="recupera users from jsonplaceholder.typicode.com">Recupera usuarios</button>
+
+    <h3>Email Usuarios</h3>
+
+    <div>
+        <ul id="usersEmail">
+
+        </ul>
+
+    </div>
+    <script>
+        const boton1 = document.querySelector('#btn1')
+        boton1.addEventListener('click',function(){
+            //Se va a realizar una peticion de forma asincrona
+            //al servidor json placeholder.typicode.com para que
+            //nos devuelva en formato JSON una lista de usuarios
+
+            const xhr = new XMLHttpRequest()
+
+        //Hay que preparar el codigo de lo que vamos a hacer
+        //con el dato recibido antes de crear y lanzar la request
+
+
+            xhr.onreadystatechange = function(){
+                if(this.readyState === 4 && this.status === 200){
+                    //Recibo el recurso solicitado y actualizamos
+                    //la parte de la pagina que necesita actualizaciones
+
+
+                }
+            }
+            //Crear la request
+        xhr.open("get","https://jsonplaceholder.typicode.com/users",false)
+        })
+
+        
+
+    </script>
+</body>
+
+</html>
