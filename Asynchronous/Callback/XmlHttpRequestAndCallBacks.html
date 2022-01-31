@@ -38,12 +38,35 @@
                 if(this.readyState === 4 && this.status === 200){
                     //Recibo el recurso solicitado y actualizamos
                     //la parte de la pagina que necesita actualizaciones
+                    console.log("Dato recibido en formato de JSON")
+                    const jsonUsers = this.responseText
+                    console.log(jsonUsers)
+
+                    //Convertimos el JSON a objeto de JavaScript
+                    console.log("Dato JSON convertido a objeto de JavaScript")
+                    const usersObject = JSON.parse(jsonUsers)
+                    console.log(usersObject)
+
+                    //Ejercicio. Recorrer la coleccion de objetos,usersObject
+                    //y seleccionar el correo de cada usuario y mostrar en una
+                    //lista no ordenada los correos del dominio .biz
+                    const usersEmail = usersObject.map(user => user.email).filter(email => email.includes(".biz"))
+                    console.log(usersEmail)
+                    const listaDeEmails = document.querySelector('#usersEmail')
+                    for (const email of usersEmail) {
+                        const item = document.createElement('li')
+                        item.textContent = email
+                        listaDeEmails.appendChild(item)
+
+                    }
 
 
                 }
             }
             //Crear la request
-        xhr.open("get","https://jsonplaceholder.typicode.com/users",false)
+        xhr.open("get","https://jsonplaceholder.typicode.com/users")
+            //Se lanza la request
+            xhr.send()
         })
 
         

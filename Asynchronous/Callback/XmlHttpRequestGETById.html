@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xmlHttpRequest</title>
+    <script async src="XmlHttpRequestGETByid.js"></script>
+</head>
+<body>
+    <!-- Se solicitara al servidor jsonplaceholder que nos envie el usuario cuyo id se especifica -->
+    <!-- Para hacer un poco mas real el ejercicio, vamos a tener una lista desplegable con el nombre de los usuarios
+    y cuando se seleccione el id que nos muestre los detalles de dicho usuario -->
+    <h1>Peticion AJAX con parametros</h1>
+    <h3>Usuarios</h3>
+    <div>
+        <label for="usuariosSelect">Seleccione el usuario</label>
+        <select id="usuariosSelect">
+            <option></option>
+        </select>
+    </div>
+
+    <!-- Detalles del usuario seleccionado -->
+    <h3>Detalles del usuario seleccionado</h3>
+    <div>
+        <ol id="detalles">
+
+        </ol>
+    </div>
+    <script>
+        const usersSelect = document.querySelector('#usuariosSelect')
+
+        usersSelect.addEventListener('change',function(){
+            const optSelected = this.value
+
+            const xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function(){
+                if(this.readyState === 4 && this.status === 200){
+                    const rta = JSON.parse(this.responseText)
+                    const orderedList = document.querySelector('#detalles')
+                    while(orderedList.hasChildNodes()){
+                        orderedList.removeChild(orderedList.lastChild)
+                    }
+                    const item = document.createElement('li')
+                    item.textContent = `${rta.name},${rta.username},${rta.email}`
+                    orderedList.appendChild(item)
+                }
+            }
+            xhr.open("get","https://jsonplaceholder.typicode.com/users/" +optSelected)
+            xhr.send()
+        })
+    </script>
+</body>
+</html>

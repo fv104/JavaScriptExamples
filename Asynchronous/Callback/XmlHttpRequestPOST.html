@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Crear peticiones POST a un servidor remoto utilizando xmlHttpRequest</h1>
+    <fieldset>
+        <legend>Alta de tareas fakes</legend>
+        <form>
+            <p><input type="text" id="userId" placeholder="ID del usuario"></p>
+            <p><input type="text" id="title" placeholder="Titulo de la tarea"></p>
+            <label for="completed">Completada</label>
+                <input type="radio" id="completed" name="completed" value="true" required>
+            <label for="NoCompletada">No completada</label>
+            <input type="radio" id="NoCompletada" name="completed" value="false" required checked>
+            <p><input type="submit"></p>
+            
+        </form>
+    </fieldset>z
+    <output id="resultadoAlta"></output>
+    <script>
+        const formulario = document.querySelector('form')
+        formulario.addEventListener('submit',function(event){
+            event.preventDefault()
+            event.stopPropagation()
+
+            //Recuperamos el valor de los controles del formulario
+            //y creamos un objeto tarea
+            const tarea = {}
+            tarea.userId = document.querySelector('#userId').value
+            tarea.title = document.querySelector('#title').value
+            tarea.completed = document.querySelector('input[name="completed"]:checked').value
+
+            const tareaJSON = JSON.stringify(tarea)
+            console.log(tareaJSON)
+
+            const xhttp = new XMLHttpRequest()
+
+            xhttp.onreadystatechange = function(){
+                if(this.readyState === 4 && this.status === 201){
+                    const rta = this.statusText
+                    const salida = document.querySelector('#resultadoAlta')
+
+                }
+            }
+            xhttp.open("post","https://jsonplaceholder.typicode.com/todos")
+            xhttp.setRequestHeader("Content-type","application/json")
+            xhttp.send(tareaJSON)
+        })
+    </script>
+</body>
+</html>
